@@ -1,13 +1,13 @@
-from repositories.municipios_repository import MunicipiosRepository
+from municipios_repository import MunicipiosRepository
 
 class MunicipiosService:
     def __init__(self):
-        self.repository = MunicipiosRepository()
+        self.municipios_repository = MunicipiosRepository()
 
-    def listar_municipios(self):
-        municipios = self.repository.listar_municipios()
+    def get_all_municipios(self):
+        municipios = self.municipios_repository.get_all_municipios()
         return municipios
 
-    def obter_municipio(self, codigo):
-        municipio = self.repository.obter_municipio(codigo)
+    def get_municipio_by_codigo(self, codigo):
+        municipio = self.municipios_repository.get_municipio_by_codigo(codigo)
         return municipio
