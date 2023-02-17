@@ -1,15 +1,14 @@
-from flask import Blueprint, jsonify, request
-from services.municipios_service import MunicipiosService
+from flask import jsonify
+from municipios_service import MunicipiosService
 
-municipios_controller = Blueprint('municipios_controller', __name__)
-municipios_service = MunicipiosService()
+class MunicipiosController:
+    def __init__(self):
+        self.municipios_service = MunicipiosService()
 
-@municipios_controller.route('/municipios')
-def listar_municipios():
-    municipios = municipios_service.listar_municipios()
-    return jsonify(municipios)
+    def get_all_municipios(self):
+        municipios = self.municipios_service.get_all_municipios()
+        return jsonify(municipios)
 
-@municipios_controller.route('/municipios/<codigo>')
-def obter_municipio(codigo):
-    municipio = municipios_service.obter_municipio(codigo)
-    return jsonify(municipio)
+    def get_municipio_by_codigo(self, codigo):
+        municipio = self.municipios_service.get_municipio_by_codigo(codigo)
+        return jsonify(municipio)
